@@ -444,7 +444,7 @@ userInput.addEventListener('keypress', (e) => {
 
 // Add welcome message when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    addMessage("👋 Hello! I'm EishiAI, your intelligent assistant. I can help with questions, provide information, and assist with various tasks. What can I help you with today?", false);
+    addMessage("👋 Hello! I'm EishiAI, your intelligent assistant. I can help with questions, provide information, and assist with various tasks. What can I help you with today? (Please be reminded that this is still a demo version so please expect constant errors or bugs)", false);
 });
 
 // Handle mobile sidebar toggle
