@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EishiAI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h2>EishiAI</h2>
+            </div>
+            <div class="sidebar-sections">
+                <div class="sidebar-section">
+                    <h3>Recent Chats</h3>
+                    <div class="sidebar-item active" id="new-chat">
+                        <i class="fas fa-comment"></i>
+                        <span>New Chat</span>
+                    </div>
+                    <div class="sidebar-item" id="history">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </div>
+                    <div class="sidebar-item" id="favorites">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Favorites</span>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <div class="sidebar-settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="main-content">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h1>EishiAI Chat</h1>
+                    <div class="chat-header-actions">
+                        <button class="header-button" id="clear-chat">
+                            <i class="fas fa-eraser"></i>
+                            Clear
+                        </button>
+                        <button class="header-button" id="export-chat">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input-container">
+                    <div class="input-wrapper">
+                        <textarea id="user-input" placeholder="Type your message..." rows="1"></textarea>
+                        <div class="input-actions">
+                            <button class="input-action-button" id="math-button" title="Insert Math Formula">
+                                <i class="fas fa-square-root-alt"></i>
+                            </button>
+                            <button class="input-action-button" id="file-upload-button" title="Upload File">
+                                <i class="fas fa-file-upload"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button id="send-button">
+                        Send
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KaTeX for rendering math -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

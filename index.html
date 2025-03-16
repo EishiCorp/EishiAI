@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EishiAI - AI-Powered Platform with advanced security and privacy protection">
+    <title>EishiAI - AI-Powered Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary-color: #333;
+            --accent-color: #04AA6D;
+            --light-gray: #f7f8fa;
+            --dark-blue: #2c3e50;
+            --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html {
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            scroll-behavior: smooth;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-light {
+            background-color: white;
+        }
+        
+        .section-gray {
+            background-color: var(--light-gray);
+        }
+        
+        .section-dark {
+            background-color: var(--dark-blue);
+            color: white;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("ai_bg.jpg");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title span {
+            color: #a0a0a0;
+            text-shadow: 2px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #038c5a;
+        }
+        
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        
+        .team-content {
+            padding: 1.5rem;
+        }
+        
+        .team-name {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .team-contact {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .team-contact:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-text {
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-map {
+            margin-top: 3rem;
+            width: 100%;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        /* Register Section */
+        .register-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .register-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .register-form input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .signin-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ddd;
+        }
+        
+        .signin-link a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: var(--shadow-sm);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                height: 0;
+                overflow: hidden;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                height: auto;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#home" aria-label="EishiAI Home">
+                        <img src="logo.png" alt="EishiAI Logo">
+                    </a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">EISHI<span>AI</span></h1>
+                <p class="hero-text">
+                    Welcome to our AI-powered platform, where cutting-edge technology meets robust security. 
+                    We prioritize your privacy and data protection, ensuring that all interactions are encrypted 
+                    and compliant with the highest industry standards.
+                </p>
+                <a href="EishiAI.html" class="btn">Chat With EishiAI</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section section-light" id="about">
+        <div class="container">
+            <h2>ABOUT THE PROJECT</h2>
+            <p class="text-center">Key features of our project</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/483/483141.png" alt="Responsive" class="feature-icon">
+                    <h3 class="feature-title">Responsive</h3>
+                    <p>EishiAI adapts seamlessly to any device, ensuring a smooth and user-friendly experience whether you're on a phone, tablet, or computer. Stay connected anytime, anywhere.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/256/3728/3728607.png" alt="Helpful" class="feature-icon">
+                    <h3 class="feature-title">Helpful</h3>
+                    <p>Designed to assist, EishiAI provides accurate and relevant responses to your queries. Whether for learning, problem-solving, or everyday questions, we're here to help.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/256/1797/1797588.png" alt="Secure" class="feature-icon">
+                    <h3 class="feature-title">Secure</h3>
+                    <p>Your privacy and security are our top priorities. EishiAI uses advanced security measures to protect your data and ensure a safe interaction every time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561196.png" alt="Support" class="feature-icon">
+                    <h3 class="feature-title">Support</h3>
+                    <p>Need assistance? Our dedicated support team is always ready to help with any questions or concerns. We're committed to providing the best experience possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section section-gray" id="team">
+        <div class="container">
+            <h2>THE TEAM</h2>
+            <p class="text-center">Meet the talented individuals behind EishiAI</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="Cabus.jpg" alt="Marc Cabus" class="team-img">
+                    <div class="team-content">
+                        <h3 class="team-name">Marc Cabus</h3>
+                        <p class="team-role">CEO & Founder</p>
+                        <p>Leading the vision and strategy for EishiAI, Marc brings over 10 years of experience in AI and machine learning.</p>
+                        <a href="#contact" class="team-contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="Vasquez.jpg" alt="Rommel Vasquez" class="team-img">
+                    <div class="team-content">
+                        <h3 class="team-name">Rommel Vasquez</h3>
+                        <p class="team-role">Art Director</p>
+                        <p>Rommel oversees the visual identity and user experience of EishiAI, ensuring an intuitive and engaging interface.</p>
+                        <a href="#contact" class="team-contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="Asperela.jpg" alt="Russel Asperela" class="team-img">
+                    <div class="team-content">
+                        <h3 class="team-name">Russel Asperela</h3>
+                        <p class="team-role">Web Designer</p>
+                        <p>Russel crafts the responsive and accessible web experience for EishiAI, focusing on performance and usability.</p>
+                        <a href="#contact" class="team-contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="team-card" style="left: 20px ;">
+                    <img src="Odulio.jpg" alt="Justine Odulio" class="team-img">
+                    <div class="team-content">
+                        <h3 class="team-name">Justine Odulio</h3>
+                        <p class="team-role">Designer</p>
+                        <p>Justine brings creative solutions to EishiAI's interface design, balancing aesthetics with functionality.</p>
+                        <a href="#contact" class="team-contact">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <img src="Amos.png" alt="Gian Amos" class="team-img">
+                    <div class="team-content">
+                        <h3 class="team-name">Gian Amos</h3>
+                        <p class="team-role">Lead Developer</p>
+                        <p>Gian architects the technical foundation of EishiAI, implementing cutting-edge AI capabilities and security measures.</p>
+                        <a href="#contact" class="team-contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">14+</div>
+                    <div class="stat-text">Partners</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">55+</div>
+                    <div class="stat-text">Projects Done</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">89+</div>
+                    <div class="stat-text">Happy Clients</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-text">Meetings</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-gray" id="contact">
+        <div class="container">
+            <h2>CONTACT</h2>
+            <p class="text-center">Let's get in touch. Send us a message:</p>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2948/2948253.png" alt="Location" class="contact-icon">
+                        <p>Manila, Philippines</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/25/25453.png" alt="Phone" class="contact-icon">
+                        <p>Phone: +00 151515</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <img src="https://cdn-icons-png.flaticon.com/512/482/482947.png" alt="Email" class="contact-icon">
+                        <p>Email: contact@eishiai.com</p>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Name" required name="Name" aria-label="Your name">
+                    <input type="email" placeholder="Email" required name="Email" aria-label="Your email">
+                    <input type="text" placeholder="Subject" required name="Subject" aria-label="Message subject">
+                    <textarea placeholder="Message" required name="Message" aria-label="Your message"></textarea>
+                    <button type="submit" class="btn">SEND MESSAGE</button>
+                </form>
+            </div>
+            
+            <div class="contact-map">
+                <img src="https://citytalk.s3.eu-central-1.amazonaws.com/wp-content/uploads/2021/06/30115236/manila-5466833_1280-1.jpg" alt="Manila, Philippines map" style="width:100%; height:100%; object-fit:cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Section -->
+    <section class="section section-light" id="register">
+        <div class="container">
+            <div class="register-container">
+                <h2>Register</h2>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+                
+                <form class="register-form" id="registerForm">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Enter Email" name="email" id="email" required>
+                    
+                    <label for="psw">Password</label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+                    
+                    <label for="psw-repeat">Repeat Password</label>
+                    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+                    
+                    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    
+                    <div class="signin-link">
+                        <p>Already have an account? <a href="#">Sign in</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 EishiAI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            // Toggle aria-expanded for accessibility
+            const expanded = navLinks.classList.contains('active');
+            mobileMenuBtn.setAttribute('aria-expanded', expanded);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    
+                    // Calculate offset to account for fixed header
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = targetPosition - headerHeight;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form validation
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally handle the form submission via AJAX
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            });
+        }
+        
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const password = document.getElementById('psw').value;
+                const confirmPassword = document.getElementById('psw-repeat').value;
+                
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                // Here you would normally handle the registration via AJAX
+                alert('Registration successful! Welcome to EishiAI.');
+                this.reset();
+            });
+        }
+        
+        // Add scroll class to header for styling
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+        
+        // Initialize header state on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('header').classList.add('sticky');
+            }
+        });
+    </script>
+</body>
+</html>

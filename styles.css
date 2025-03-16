@@ -1,0 +1,457 @@
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #1e1e1e;
+    border-right: 1px solid #333;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.sidebar-collapsed {
+    width: 60px;
+}
+
+.sidebar-header {
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-header h2 {
+    opacity: 0;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+}
+
+.sidebar-toggle:hover {
+    color: #fff;
+}
+
+.sidebar-sections {
+    padding: 15px;
+}
+
+.sidebar-section {
+    margin-bottom: 15px;
+}
+
+.sidebar-section h3 {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-section h3 {
+    opacity: 0;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    color: #ccc;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.sidebar-item:hover {
+    background-color: #333;
+}
+
+.sidebar-item.active {
+    background-color: rgba(74, 144, 226, 0.2);
+    color: #4a90e2;
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.sidebar-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-item span {
+    opacity: 0;
+}
+
+.sidebar-footer {
+    padding: 15px;
+    border-top: 1px solid #333;
+    margin-top: auto;
+}
+
+.sidebar-settings {
+    display: flex;
+    align-items: center;
+    color: #888;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.sidebar-settings i {
+    margin-right: 8px;
+}
+
+.sidebar-settings span {
+    white-space: nowrap;
+    overflow: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-collapsed .sidebar-settings span {
+    opacity: 0;
+}
+
+/* Main Chat Area Styles */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: all 0.3s ease;
+    margin-left: 250px;
+}
+
+.chat-container {
+    width: 100%;
+    background-color: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header {
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+}
+
+.chat-header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.chat-header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.header-button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.header-button:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.header-button i {
+    margin-right: 5px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #1a1a1a;
+    scroll-behavior: smooth;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.user-message {
+    flex-direction: row-reverse;
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 12px;
+    max-width: 75%;
+    line-height: 1.5;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-message .message-content {
+    background-color: #4a90e2;
+    margin-right: 12px;
+    border-bottom-right-radius: 4px;
+}
+
+.bot-message .message-content {
+    background-color: #2a2a2a;
+    margin-left: 12px;
+    border-bottom-left-radius: 4px;
+}
+
+.message-content p {
+    margin: 0 0 10px 0;
+}
+
+.message-content p:last-child {
+    margin: 0;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 5px;
+    display: block;
+}
+
+.profile-container {
+    position: relative;
+}
+
+.profile-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #2a2a2a;
+}
+
+.profile-status {
+    width: 10px;
+    height: 10px;
+    background-color: #4ade80;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 2px solid #1a1a1a;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 15px 20px;
+    background-color: #1e1e1e;
+    border-top: 1px solid #333;
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    padding-right: 40px;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    outline: none;
+    resize: none;
+    max-height: 150px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    font-family: inherit;
+}
+
+#user-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.input-actions {
+    position: absolute;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.input-action-button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: color 0.2s;
+}
+
+.input-action-button:hover {
+    color: #fff;
+}
+
+#send-button {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#send-button i {
+    margin-left: 5px;
+}
+
+#send-button:hover {
+    background-color: #3a7bc8;
+}
+
+#send-button:active {
+    transform: scale(0.98);
+}
+
+#send-button:disabled {
+    background-color: #2a5a8a;
+    cursor: not-allowed;
+}
+
+/* Math Formulas Styles - IMPROVED */
+.math-formula {
+    font-family: 'Cambria Math', 'STIX Two Math', serif;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 5px 8px;
+    border-radius: 6px;
+    margin: 0 3px;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 1.4;
+    font-size: 1.1em;
+    color: #e0e0e0;
+}
+
+/* KaTeX styles for math formulas - IMPROVED */
+.katex {
+    font-size: 1.1em !important;
+    line-height: 1.3 !important;
+    font-weight: normal !important;
+    color: #e0e0e0 !important;
+}
+
+.katex-display {
+    overflow-x: auto;
+    padding: 12px;
+    margin: 12px 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    border-left: 3px solid #4a90e2;
+}
+
+.katex-display > .katex {
+    font-size: 1.2em !important;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+    
+    .sidebar-toggle {
+        display: block;
+    }
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
